@@ -1,0 +1,79 @@
+OOPS:
+A class is a blueprint from which specific are created
+
+Class- class variable
+           instance variable
+           data member
+
+Inheritance: a class can inherit attributes and behavior methods from another class, called the superclass,
+                     a class which inherits from a superclass is called subclass, also called heir class or child class
+
+Encapsulation: binding the data and code together as a single unit
+	        securing data by hiding the implementing details to user
+
+Abstraction : hides the implementation details and provides the functionality to the user
+                      you can achieve using abstrct classes and interfaces
+Method:
+To add a method In a class
+then def praise(self):
+         return self.name
+
+
+USING DATABASES IN SQL:
+Import sqlite
+Conn = sqlite.connect(‘  ‘)
+Cur = conn.cursor()
+Cur.execute(‘DROP IF EXISTS COUNTS’)
+Cur.execute(‘’’ create table counts(email TEXT, count INTEGER)’’’)
+Fname = input(‘enter file namer’)
+If (len(fname) <1) : fname = ‘mbox-short.txt’
+Fh = open(fname)
+For line in fh:
+	If not line startswith (‘FROM’): continue
+Pieces = line.split()
+Email = pieces[1]
+Cur.execute(‘select count FROM counts where email = ? ’, (email,))
+Row = cur.fetchone()
+If row is None:
+Cur.execute(‘’’insert into counts(email, count)
+		Values(?, 1) ‘’’(email,))
+              Else:
+Cur.execute(‘update counts set count = count + 1 where email = ? ’, (email,))
+Conn.commit()
+Sqlstr = ‘select email, count from counts order by count limit ‘10’
+For row in cur.execute(sqlstr):
+Print(str(row[0]), row[1])
+Cur.close()
+Example:
+Import sqlite3
+Conn = sqllite.connect(‘employee.db’)
+C = conn.cursor()
+c.execute(“”” create table employees(
+		first text,
+                                    last text,
+		pay integer
+		)”””)
+Emp_1 = Employee(‘john’, ‘doe’, 5000)
+Emp_2 = Employee(‘jane’, ‘doe’, 8000)
+c.execute(“insert into employees values(?, ?, ?)”, (emp_1.first, emp_1.last, emp_1.pay))
+conn.commit()
+c.execute(“Insert into employees values(“:first, :last, :pay)”, {‘first’:emp_2first, ‘last’: emp_2.last,  ‘pay’:emp_2.pay})
+conn.commit() 
+c.execute(“select * from employees where last = ‘schafer’”)
+print(c.fetchone())      # it will returns none no of rows
+conn.commit()
+conn.close()
+
+SQL Alchemy:
+from sqlalchemy import column, integer, numeric, string
+class cookie(Base):
+	__tablename__ = 'cookies'
+	
+	 id = Column(Integer, primary_key=True)
+    	title = Column(String(255), nullable=False)
+    	year = Column(Integer)
+    	directed_by = Column(Integer, ForeignKey('directors.id'))
+
+
+
+	
