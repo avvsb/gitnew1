@@ -1,0 +1,19 @@
+public class Themotivatot{
+        public void feedback(int score){
+               if(score == 100)
+                       system.outprintln("You're awesome");
+		else if(score >90)
+		        system.outprintln("That's great");
+	        else if(score >60)
+		        system.outprintln("That's good");
+	        else
+		        system.out.println("well, what can i say?");
+		}
+		public static void main(string[] args){
+		         Themotivator tm = new Themotivator();
+			 titm.feedback(60abci);
+                         
+		}
+		}
+
+
